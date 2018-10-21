@@ -3,6 +3,13 @@ import ApiClient from 'utils/ApiClient';
 
 const API_URL = '/api/patient?ssn=';
 
+const params = new Map(
+  window.location.search
+    .slice(1)
+    .split('&')
+    .map(kv => kv.split('='))
+);
+
 class PatientStore {
   client: ApiClient;
   isLoaded: boolean;
@@ -60,9 +67,7 @@ class PatientStore {
   }
 
   async fetch() {
-    const res = await this.client.get(
-      API_URL + window.location.search.substring(1)
-    );
+    const res = await this.client.get(API_URL + params.get('ssn'));
     if (res && res.name) {
       this.patientName = res.name;
       this.dob = res.dob;
