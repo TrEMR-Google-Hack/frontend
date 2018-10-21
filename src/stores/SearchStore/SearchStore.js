@@ -7,7 +7,7 @@ class SearchStore {
 
   async fetch(match: string) {
     const res = await this.client.get(
-      '/search?query=' + encodeURIComponent(match)
+      '/api/search?query=' + encodeURIComponent(match)
     );
     if (res && res.name) {
       this.foundSsn = res.ssn;
