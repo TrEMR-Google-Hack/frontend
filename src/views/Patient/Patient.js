@@ -25,7 +25,6 @@ class Patient extends React.Component<Props> {
     const {
       patientName,
       proposedName,
-      patientInfo,
       onNameChange,
       onDoBChange,
       onSSNChange,
