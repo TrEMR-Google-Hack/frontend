@@ -23,7 +23,8 @@ type Props = {
 
 type State = {
   notification: string,
-  featuredItems: Array<Object>
+  featuredItems: Array<Object>,
+  search: any
 };
 
 class Dashboard extends React.Component<Props, State> {
@@ -64,11 +65,22 @@ class Dashboard extends React.Component<Props, State> {
   }
 
   render() {
+    const { found, foundSsn, fetch } = this.props;
     return (
       <React.Fragment>
         <Title title="Central EMR" />
         <Navbar title={{ label: 'Central EMR', path: '/' }} />
-        <Hero centered title={<Input />} />
+        <Hero
+          centered
+          title={
+            <Input
+              label={found ? 'Go to patient' : 'Submit'}
+              active={found}
+              onClick={() => history.push(`/patient?ssn=${foundSsn}`)}
+              onChange={e => fetch(e.target.value)}
+            />
+          }
+        />
       </React.Fragment>
     );
   }
@@ -92,16 +104,18 @@ const Input = props => (
     <div className="column has-text-left" style={{ paddingLeft: '0' }}>
       <button
         className="button is-primary is-large"
+        disabled={!props.active}
+        onClick={props.onClick}
         style={{
           borderRadius: '0 15px 15px 0',
           margin: '-70px 0',
           textAlign: 'right'
         }}
       >
-        Search
+        {props.label}
       </button>
     </div>
   </div>
 );
 
-export default withRouter(observer(Dashboard));
+export default inject('search')(withRouter(observer(Dashboard)));

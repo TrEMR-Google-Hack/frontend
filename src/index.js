@@ -12,6 +12,7 @@ import Patient from 'views/Patient';
 import Page404 from 'views/404';
 import 'index.scss';
 import InStore from 'stores/InStore';
+import SearchStore from 'stores/SearchStore';
 //import 'assets/favicon.ico';
 
 const apiClient = new ApiClient('http://localhost:8080');
@@ -20,7 +21,8 @@ const stores = {
   ethereum: web3Store,
   account: new AccountStore(web3Store.isWeb3Enabled),
   patient: new PatientStore(apiClient),
-  instore: new InStore(apiClient)
+  instore: new InStore(apiClient),
+  search: new SearchStore(apiClient)
 };
 
 // eslint-disable-next-line no-undef
