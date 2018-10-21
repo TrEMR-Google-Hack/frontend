@@ -3,12 +3,7 @@ import ApiClient from 'utils/ApiClient';
 
 const API_URL = '/api/patient?ssn=';
 
-const params = new Map(
-  window.location.search
-    .slice(1)
-    .split('&')
-    .map(kv => kv.split('='))
-);
+const params = new URLSearchParams(window.location.search);
 
 class PatientStore {
   client: ApiClient;
