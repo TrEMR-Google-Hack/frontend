@@ -65,7 +65,7 @@ class Dashboard extends React.Component<Props, State> {
   }
 
   render() {
-    const { search } = this.props;
+    const { search, history } = this.props;
     const { found, foundSsn, fetch } = search;
     return (
       <React.Fragment>
