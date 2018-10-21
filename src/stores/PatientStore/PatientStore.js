@@ -41,7 +41,6 @@ class PatientStore {
   }
 
   async onSave() {
-    const params = new URLSearchParams(window.location.search);
     const res = await this.client.post('/api/patient');
     this.saveSuccess = true;
     runInAction(() => {
@@ -61,6 +60,7 @@ class PatientStore {
   }
 
   async fetch() {
+    const params = new URLSearchParams(window.location.search);
     const res = await this.client.get(API_URL + params.get('ssn'));
     if (res && res.name) {
       this.patientName = res.name;
