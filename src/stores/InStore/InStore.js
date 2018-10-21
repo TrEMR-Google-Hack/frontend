@@ -7,6 +7,7 @@ class InStore {
   isLoaded: boolean;
   async fetch() {
     const res = await this.client.get(API_URL);
+    console.log(this.client);
     if (res && res.length > 0) {
       this.patients = res;
     }
@@ -14,6 +15,7 @@ class InStore {
   constructor(client: ApiClient) {
     this.client = client;
     this.patients = [];
+    this.isLoaded = false;
   }
 }
 

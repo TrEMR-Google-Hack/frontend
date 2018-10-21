@@ -2,11 +2,9 @@
 import 'whatwg-fetch';
 
 class ApiClient {
-  API_URL: string;
-
   async get(url: string): ?Promise<Object> {
     try {
-      const res = await fetch(API_URL + url);
+      const res = await fetch(url);
       return await res.json();
     } catch (e) {
       return undefined;
@@ -15,7 +13,7 @@ class ApiClient {
 
   async post(url: string, data: Object, headers?: Object): ?Promise<Object> {
     try {
-      const res = await fetch(API_URL + url, {
+      const res = await fetch(url, {
         method: 'POST',
         headers: Object.assign(headers || {}, {
           'Content-Type': 'application/json'
@@ -30,7 +28,7 @@ class ApiClient {
 
   async put(url: string, data: Object, headers?: Object): ?Promise<Object> {
     try {
-      const res = await fetch(API_URL + url, {
+      const res = await fetch(url, {
         method: 'PUT',
         headers: Object.assign(headers || {}, {
           'Content-Type': 'application/json'
@@ -45,7 +43,7 @@ class ApiClient {
 
   async delete(url: string, data?: Object, headers?: Object): ?Promise<Object> {
     try {
-      const res = await fetch(API_URL + url, {
+      const res = await fetch(url, {
         method: 'DELETE',
         headers: Object.assign(headers || {}, {
           'Content-Type': 'application/json'
@@ -57,10 +55,7 @@ class ApiClient {
       return undefined;
     }
   }
-
-  constructor(BASE_URL: string) {
-    this.API_URL = BASE_URL;
-  }
+  constructor() {}
 }
 
 export default ApiClient;
