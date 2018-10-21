@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import ApiClient from 'utils/ApiClient';
 import AccountStore from 'stores/AccountStore';
 import Web3Store from 'stores/Web3Store';
@@ -33,6 +33,7 @@ const App = () => (
   <Provider {...stores}>
     <BrowserRouter>
       <Switch>
+        <Redirect from="/index.html" to="/" />
         <Route exact path="/" component={In} />
         <Route path="/search" component={Search} />
         <Route path="/patient" component={Patient} />
