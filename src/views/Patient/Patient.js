@@ -87,7 +87,7 @@ class Patient extends React.Component<Props> {
                 <div className="columns">
                   <button
                     className="button is-inverted"
-                    style={{ marginLeft: '12px', borderRadius: '12px' }}
+                    style={{ margin: '0 12px', borderRadius: '12px' }}
                     onClick={onCancel}
                   >
                     Cancel
