@@ -3,8 +3,6 @@ import ApiClient from 'utils/ApiClient';
 
 const API_URL = '/api/patient?ssn=';
 
-const params = new URLSearchParams(window.location.search);
-
 class PatientStore {
   client: ApiClient;
   isLoaded: boolean;
@@ -43,6 +41,7 @@ class PatientStore {
   }
 
   async onSave() {
+    const params = new URLSearchParams(window.location.search);
     const res = await this.client.post('/api/patient');
     this.saveSuccess = true;
     runInAction(() => {
