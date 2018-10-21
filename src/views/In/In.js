@@ -54,7 +54,7 @@ class About extends React.Component<Props> {
               ))}
               <HighlightableRow>
                 <Cell>John Doe</Cell>
-                <Cell>8:30am</Cell>
+                <Cell>April 2, 1954</Cell>
                 <Cell>Flu</Cell>
                 <Cell>Steroids</Cell>
               </HighlightableRow>
