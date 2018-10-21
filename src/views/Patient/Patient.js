@@ -91,7 +91,7 @@ class Patient extends React.Component<Props> {
                     onClick={onCancel}
                   >
                     Cancel
-                  </button>{' '}
+                  </button>
                   <button
                     style={{ borderRadius: '12px' }}
                     className="button is-primary"

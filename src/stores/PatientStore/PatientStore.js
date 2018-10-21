@@ -29,6 +29,7 @@ class PatientStore {
   }
 
   onIllnessChange(e) {
+    console.log(e.target.value);
     this.illness = e.target.value;
   }
 
@@ -41,7 +42,14 @@ class PatientStore {
   }
 
   async onSave() {
-    const res = await this.client.post('/api/patient');
+    await this.client.post('/api/patient', {
+      name: this.proposedName,
+      dob: this.dob,
+      ssn: this.ssn,
+      illness: this.illness,
+      drugs: this.drugs,
+      allergies: this.allergies
+    });
     this.saveSuccess = true;
     runInAction(() => {
       setTimeout(() => {
