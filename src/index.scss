@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
+
+html,
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+$primary: #228ecd;
+
+@import 'bulma';
