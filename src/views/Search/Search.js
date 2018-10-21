@@ -65,7 +65,8 @@ class Dashboard extends React.Component<Props, State> {
   }
 
   render() {
-    const { found, foundSsn, fetch } = this.props;
+    const { search } = this.props;
+    const { found, foundSsn, fetch } = search;
     return (
       <React.Fragment>
         <Title title="Central EMR" />
@@ -77,7 +78,9 @@ class Dashboard extends React.Component<Props, State> {
               label={found ? 'Go to patient' : 'Submit'}
               active={found}
               onClick={() => history.push(`/patient?ssn=${foundSsn}`)}
-              onChange={e => fetch(e.target.value)}
+              onChange={e => {
+                fetch(e.target.value);
+              }}
             />
           }
         />
@@ -98,7 +101,7 @@ const Input = props => (
           borderRadius: '15px 0 0 15px',
           margin: '-70px 0'
         }}
-        {...props}
+        onChange={props.onChange}
       />
     </div>
     <div className="column has-text-left" style={{ paddingLeft: '0' }}>

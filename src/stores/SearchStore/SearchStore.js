@@ -1,8 +1,10 @@
 import { decorate, observable, action } from 'mobx';
 import ApiClient from 'utils/ApiClient';
+
 class SearchStore {
   found: boolean;
   foundSsn: string;
+
   async fetch(match: string) {
     const res = await this.client.get(
       '/search?query=' + encodeURIComponent(match)
@@ -14,9 +16,11 @@ class SearchStore {
       this.found = false;
     }
   }
+
   constructor(client: ApiClient) {
     this.client = client;
     this.found = false;
+    this.fetch = this.fetch.bind(this);
   }
 }
 
