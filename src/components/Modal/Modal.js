@@ -17,6 +17,27 @@ class Modal extends React.Component<Props> {
     this.state = {
       isActive: props.active
     };
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  handleClickOutside(event) {
+    const { onButtonClick } = this.props;
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      onButtonClick(false);
+    }
   }
 
   render() {
@@ -32,6 +53,7 @@ class Modal extends React.Component<Props> {
     const primaryColor = successColor || 'primary';
     return (
       <div
+        ref={this.setWrapperRef}
         className={`modal ${this.state.isActive ? 'is-active' : ''}`}
         onClick={() => {
           if (onActivationChange) onActivationChange(!this.state.isActive);
@@ -76,4 +98,5 @@ class Modal extends React.Component<Props> {
     );
   }
 }
+
 export default Modal;
